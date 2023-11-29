@@ -49,6 +49,8 @@ function round(computerChoiche, playerSelection){
 }
 
 function game(){
+    let win = 0
+    let lose = 0
     for(let i = 0; i<5; i++){
         let playerSelection = prompt("Choose between Rock, Paper or Scissors:")
         let computerChoice = getComputerChoiche()
@@ -56,7 +58,25 @@ function game(){
         console.log(computerChoice)
         let result = round(computerChoice, playerSelection)
         console.log(result)
+
+        /** Now we count the wins and loses */
+        
+        if(result.includes("win")){
+            win++
+        }
+        else if(result.includes("lose")){
+            lose++
+        }
+    }
+    if(win>lose){
+        return "You have won the game."
+    }
+    else if(win<lose){
+        return "You have lost the game."
+    }else{
+        return "You tied."
     }
 }
 
-game()
+let result = game()
+console.log(result)
